@@ -21,8 +21,6 @@ const PokemonPage = () => {
     return <p>Error fetching Pokémon data.</p>;
   }
 
-  console.log(data); // Add this line to check data
-
   return (
     <>
       <Link className="gap-7 ml-5" to="/">
