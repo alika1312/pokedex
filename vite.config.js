@@ -5,7 +5,7 @@ import  path from 'path'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/vite-deploy-demo/',
+  base: '/pokedex/',
   resolve: {
     alias:{
       '@components': path.resolve(__dirname, './src/components'),
