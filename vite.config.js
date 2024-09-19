@@ -5,6 +5,7 @@ import  path from 'path'
 
 export default defineConfig({
   plugins: [react()],
+  base: '/vite-deploy-demo/',
   resolve: {
     alias:{
       '@components': path.resolve(__dirname, './src/components'),
@@ -14,4 +15,5 @@ export default defineConfig({
       '@utils': path.resolve(__dirname, './src/utils'),
     }
   }
+  
 })
