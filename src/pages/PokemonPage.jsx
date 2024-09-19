@@ -23,7 +23,7 @@ const PokemonPage = () => {
 
   return (
     <>
-      <Link className="gap-7 ml-5" to="/">
+      <Link className="gap-7 ml-5" to="/pokedex">
         ⬅️
       </Link>
       <div className="flex flex-row justify-evenly gap-1 mt-8">

@@ -66,7 +66,7 @@ const PokemonCardWrapper = () => {
         {filteredPokemons?.map((name) => (
           <Link
             className="cursor-pointer h-full w-fit "
-            to={`/${name}`}
+            to={`/pokedex/${name}`}
             key={name}
           >
             {name}
