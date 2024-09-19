@@ -1,5 +1,6 @@
 name: Deploy
-
+env:
+  VITE_API_PATH: "https://pokeapi.co/api/v2/"
 on:
   push:
     branches:
