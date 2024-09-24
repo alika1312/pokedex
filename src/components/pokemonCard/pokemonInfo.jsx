@@ -22,7 +22,7 @@ const PokemonInfo = () => {
       <div className="font-extralight">dex number: {data.id}</div>
       <div className="font-extralight flex flex-row gap-1">
         Type:
-        {data.types.map((typeObj, index) => (
+        {data?.types?.map((typeObj, index) => (
           <p
             className="border-2 rounded-lg p-1"
             key={index}

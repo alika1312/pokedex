@@ -1,20 +1,30 @@
-import { useQuery } from "@tanstack/react-query";
-import {getPokemon} from '@lib/api.js'
-
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { getPokemon } from '@lib/api.js';
 
 export default function useFetchPokemon(pokemonName) {
-    let {data} = useQuery({queryKey:['pokemon']})
-    data = data ?? {};
-    return useQuery({
+    const queryClient = useQueryClient();
+
+    const { data, isLoading } = useQuery({
         queryKey: ['pokemon'],
-        queryFn: async () => {
-            if(!data[pokemonName]) {
-                const pokemonData = await getPokemon(pokemonName)
-                data[pokemonName] = pokemonData;
-            }
-           return data
-        } 
+        
     });
-    
-    
+    console.log(isLoading)
+
+ 
+    return useQuery({
+        queryKey: ['pokemon', pokemonName],
+        queryFn: async () => {
+            if (data?.[pokemonName]) {
+                return data;
+            } else {
+                const pokemonData = await getPokemon(pokemonName);
+                const updatedData = { ...data, [pokemonName]: pokemonData };
+                queryClient.setQueryData(['pokemon'], updatedData);
+                console.log(updatedData)
+                return updatedData;
+               
+            }
+        },
+        
+    });
 }

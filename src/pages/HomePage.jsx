@@ -1,19 +1,18 @@
-import Filter from "@components/filters";
 import PokemonCardWrapper from "@components/pokemonCard/PokemonCardWrapper";
 import { PokemonFilterContext } from "@hooks/filterContext";
 import Layout from "./layout";
-import { useQuery } from "@tanstack/react-query";
+import pokemonBg from "../assets/pokemon-bg2.png";
 
 function HomePage() {
-  const { data } = useQuery({
-    queryKey: ["pokemon"],
-  });
-  console.log(data);
   return (
     <PokemonFilterContext>
       <Layout>
-        <Filter />
-        <PokemonCardWrapper />
+        <div
+          className="min-h-screen bg-center"
+          style={{ backgroundImage: `url(${pokemonBg})` }}
+        >
+          <PokemonCardWrapper />
+        </div>
       </Layout>
     </PokemonFilterContext>
   );

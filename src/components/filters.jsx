@@ -16,7 +16,6 @@ const selectOptions = Object.keys(pokeTypesColors).map((type) => (
 
 function Filter() {
   const { filterState, handleSetFilters } = useContext(FilterContext);
-  console.log(filterState.groupBy);
 
   return (
     <div className="w-fit ml-auto mr-4">

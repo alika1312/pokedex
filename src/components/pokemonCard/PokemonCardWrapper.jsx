@@ -1,9 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
-import { getAllPokemons } from "@lib/api.js";
-import { getPokemonType } from "@lib/api.js";
-import { Link } from "react-router-dom";
-import { useContext, useMemo } from "react";
 import { FilterContext } from "@hooks/filterContext.jsx";
+import { getAllPokemons, getPokemonType } from "@lib/api.js";
+import { useQuery } from "@tanstack/react-query";
+import { Empty } from "antd";
+import { useContext, useMemo } from "react";
+import PokemonPageLink from "../PokemonPageLink";
 
 // Logic as a wrapper for the cards
 const PokemonCardWrapper = () => {
@@ -57,20 +57,18 @@ const PokemonCardWrapper = () => {
   }, [filterState.search, filterState.sortBy, pokemons]);
 
   if (isLoading) {
-    return <p>We are loading...</p>;
+    return (
+      <main className="flex flex-col gap-3 mt-3 mx-auto justify-center w-full h-full">
+        <Empty />
+      </main>
+    );
   }
 
   return (
     <main className="flex flex-col gap-3 mt-3 mx-auto justify-center w-full h-full">
-      <div className="grid grid-cols-3 gap-4">
-        {filteredPokemons?.map((name) => (
-          <Link
-            className="cursor-pointer h-full w-fit "
-            to={`/pokedex/${name}`}
-            key={name}
-          >
-            {name}
-          </Link>
+      <div className="grid grid-cols-3 gap-4 p-2">
+        {filteredPokemons?.map((pokemonName) => (
+          <PokemonPageLink pokemonName={pokemonName} key={pokemonName} />
         ))}
       </div>
     </main>
